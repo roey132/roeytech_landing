@@ -42,14 +42,14 @@ body {
 .purple-hero {
   background:
     radial-gradient(
-      1200px 600px at 85% -10%,
-      rgba(139, 92, 246, 0.18),
+      50% 50% at 95% 10%,
+      rgba(139, 92, 246, 0.3),
       transparent 60%
     ),
     radial-gradient(
-      900px 500px at 10% 110%,
-      rgba(124, 58, 237, 0.16),
-      transparent 60%
+      50% 50% at 10% 100%,
+      rgba(124, 58, 237, 0.25),
+      transparent 100%
     );
 }
 
