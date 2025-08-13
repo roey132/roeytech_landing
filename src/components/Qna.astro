@@ -4,7 +4,12 @@
  * - title?: string
  * - items: Array<{ q: string; a: string; open?: boolean }>
  */
-const { title = "שאלות נפוצות", items = [] } = Astro.props;
+const { title = "שאלות נפוצות", 
+  items=[
+            { q: "עם מה אתה עובד?", a: "Astro, Tailwind, אינטגרציות API, ואוטומציות.", open: true },
+            { q: "איך מתחילים?", a: "שיחה קצרה, מיפוי צרכים, הצעת תכנית, ואז מתחילים." },
+            { q: "מה זמן האספקה?", a: "בין ימים לשבועות – תלוי בהיקף. תקבלו עדכונים שוטפים." },
+        ]}  = Astro.props;
 ---
 
 <section class="py-14 px-6">

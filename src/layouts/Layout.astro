@@ -21,23 +21,10 @@ import ContactForm from "../components/ContactForm.astro";
 
   <body class="bg-[rgb(var(--background))] text-[rgb(var(--foreground))] font-sans">
 
-    <Hero
-        imageSrc="/images/placeholder-image.png"
-        title="שכרו אדם אחד, לא סוכנות."
-        subtitle="אני רועי. אני בונה אוטומציות שימושיות, CRM ייחודיים ודאשבורדים לצוותים קטנים."
-        buttonPrimary={{ text: "עובדים איתי", href: "#contact" }}
-        tags={["אוטומציות", "אינטגרציות API", "דאשבורדים", "קודי CRM", "בוטים"]}
-    />
+    <Hero/>
     <div class="border-t border-[rgb(var(--border))] w-full"></div>
     <WhyWorkWithMe/> 
-    <Qna
-        title = "שאלות נפוצות",
-        items={[
-            { q: "עם מה אתה עובד?", a: "Astro, Tailwind, אינטגרציות API, ואוטומציות.", open: true },
-            { q: "איך מתחילים?", a: "שיחה קצרה, מיפוי צרכים, הצעת תכנית, ואז מתחילים." },
-            { q: "מה זמן האספקה?", a: "בין ימים לשבועות – תלוי בהיקף. תקבלו עדכונים שוטפים." },
-        ]}
-    />
+    <Qna/>
     <div class="border-t border-[rgb(var(--border))] w-full"></div>
     <AboutMe/>
     <div class="border-t border-[rgb(var(--border))] w-full"></div>
