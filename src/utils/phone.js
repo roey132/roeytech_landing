@@ -10,4 +10,3 @@ export function isValidPhone(value, defaultCountry = "IL") {
 
   return !!phone && phone.isValid();
 }
-import { isValidPhone } from "../utils/phone.js";
