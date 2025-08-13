@@ -1,54 +1,64 @@
 ---
 const {
-  title = "שכרו אדם אחד, לא סוכנות.",
-  subtitle = "טקסט תיאור קצר על השירותים.",
+  title = "מותאם לצרכים שלך",
+  subtitle = `
+  אני מפתח מערכות מותאמות אישית, בוטים, אוטומציות ואינטגרציות בין שירותים, ומבצע תהליכים מבוססי נתונים. הכל כדי לחסוך לך זמן, לשפר ביצועים ולהביא תוצאות.
+  `,
   imageSrc = "/images/placeholder-image.png",
-  buttonPrimary = { text: "עובדים איתי", href: "#" },
-  tags = ["אוטומציות"],
+  buttonPrimary = { text: "בואו נתחיל יחד", href: "#contact" },
+  tags = ["אוטומציות", "אינטגרציות", "בוטים", "עיבוד נתונים", "התאמה אישית"],
 } = Astro.props;
 ---
 
-
-<section class="purple-hero py-20 px-6">
-  <div class="max-w-7xl mx-auto flex flex-col md:flex-column items-center gap-12">
-
-
+<section class="purple-hero px-6 py-20">
+  <div
+    class="md:flex-col mx-auto flex max-w-7xl flex-col items-center justify-center gap-12"
+  >
     <!-- text on the visual right -->
-    <div class="flex-1 text-right">
-      <h1 class="text-center text-4xl md:text-5xl font-bold leading-snug text-[rgb(var(--foreground))]">
+    <div class="flex text-right flex-col items-center justify-center">
+      <h1
+        class="text-center text-5xl leading-snug font-bold text-[rgb(var(--foreground))] md:text-8xl"
+      >
         {title}
       </h1>
 
-      <p class="text-center mt-4 text-lg text-[rgb(var(--muted))] max-w-2xl md:ms-auto">
+      <p
+        class="mt-4 max-w-2xl leading-snug text-center text-2xl text-[rgb(var(--muted))] "
+      >
         {subtitle}
       </p>
 
       <!-- tags -->
-      <div class="flex flex-wrap justify-center gap-3 mt-6">
-        {tags.map((tag:string) => (
-          <span class="px-4 py-1 rounded-full border border-[rgb(var(--border))] bg-[rgb(var(--card))] text-[rgb(var(--foreground))] text-sm">
-            {tag}
-          </span>
-        ))}
+      <div class="mt-6 flex flex-wrap justify-center gap-3">
+        {
+          tags.map((tag: string) => (
+            <span class="rounded-full border border-[rgb(var(--border))] bg-[rgb(var(--card))] px-4 py-1 text-base text-[rgb(var(--foreground))]">
+              {tag}
+            </span>
+          ))
+        }
       </div>
 
       <!-- buttons -->
-      <div class="mt-8 flex gap-4 justify-center">
-        <a href={buttonPrimary.href}
-           class="inline-block px-6 py-3 rounded-lg font-medium bg-[rgb(var(--primary))] text-[rgb(var(--primary-foreground))] hover:opacity-90 transition">
+      <div class="mt-8 flex justify-center gap-4">
+        <a
+          href={buttonPrimary.href}
+          class="inline-block rounded-lg bg-[rgb(var(--primary))] px-6 py-3 font-medium text-[rgb(var(--primary-foreground))] transition hover:opacity-90"
+        >
           {buttonPrimary.text}
         </a>
       </div>
     </div>
-        <!-- image on the visual left (first in row) -->
-    <div class="flex-1 flex justify-center">
-        <div class="aspect-[1/1] max-w-md w-full"> <!-- 1:1 square ratio -->
-            <img
-            src={imageSrc}
-            alt="תמונה ראשית"
-            class="w-full h-full object-cover rounded-2xl shadow-lg"
-            />
-        </div>
+    <!-- image on the visual left (first in row) -->
+    <div class="flex flex-1 justify-center">
+      <div class="aspect-[1/1] w-full max-w-md">
+        <!-- 1:1 square ratio -->
+        <img
+          src={imageSrc}
+          alt="תמונה ראשית"
+          class="h-full w-full rounded-2xl object-cover shadow-lg"
+        />
+      </div>
     </div>
   </div>
 </section>

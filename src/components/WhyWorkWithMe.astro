@@ -1,47 +1,51 @@
 ---
-const {
-  title = "למה לעבוד איתי",
-  items = [
-    {
-      heading: "אישי, לא סוכנות",
-      text: "תעבדו תמיד איתי. בלי העברות, בלי הפתעות."
-    },
-    {
-      heading: "תוצאות לפני פיצ'רים",
-      text: "מתמקדים בזמן שנחסך, פחות טעויות ודיווח ברור."
-    },
-    {
-      heading: "תהליך פשוט",
-      text: "שיחה קצרה - מיפוי - תכנון - עדכונים שבועיים - השקה ותמיכה."
-    },
-    {
-      heading: "ליווי ארוך־טווח",
-      text: "זמין לתקלות, התאמות ושיפורים אחרי ההשקה."
-    },
-  ],
-} = Astro.props;
+type TextBlock = {
+  heading: string;
+  text: string;
+};
+const items: TextBlock[] = [
+  {
+    heading: "אישי, לא סוכנות",
+    text: "תעבדו תמיד איתי. בלי העברות, בלי הפתעות.",
+  },
+  {
+    heading: "תוצאות לפני פיצ'רים",
+    text: "מתמקדים בזמן שנחסך, פחות טעויות ודיווח ברור.",
+  },
+  {
+    heading: "תהליך פשוט",
+    text: "שיחה קצרה - מיפוי - תכנון - עדכונים שבועיים - השקה ותמיכה.",
+  },
+  {
+    heading: "ליווי ארוך־טווח",
+    text: "זמין לתקלות, התאמות ושיפורים אחרי ההשקה.",
+  },
+];
+
+const { title = "למה לעבוד איתי" } = Astro.props;
 ---
 
-<section class="py-14 px-6">
-  <div class="max-w-7xl mx-auto">
-    <h2 class="text-center text-2xl md:text-3xl font-semibold text-[rgb(var(--foreground))] mb-6">
+<section class="px-6 py-14">
+  <div class="mx-auto max-w-7xl">
+    <h2
+      class="mb-6 text-center text-2xl font-semibold text-[rgb(var(--foreground))] md:text-3xl"
+    >
       {title}
     </h2>
 
     <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-      {items.map(({heading, text }) => (
-        <article
-          class="purple-hue relative rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--card))]/70 shadow-sm
-                 px-6 py-6 text-right overflow-hidden group">
-          
-          <h3 class="relative z-10 mt-1 text-xl md:text-xl font-bold text-[rgb(var(--foreground))]">
-            {heading}
-          </h3>
-          <p class="relative z-10 mt-1 text-md text-[rgb(var(--muted))]">
-            {text}
-          </p>
-        </article>
-      ))}
+      {
+        items.map(({ heading, text }) => (
+          <article class="purple-hue group relative overflow-hidden rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--card))]/70 px-6 py-6 text-right shadow-sm">
+            <h3 class="relative z-10 mt-1 text-xl font-bold text-[rgb(var(--foreground))] md:text-xl">
+              {heading}
+            </h3>
+            <p class="text-md relative z-10 mt-1 text-[rgb(var(--muted))]">
+              {text}
+            </p>
+          </article>
+        ))
+      }
     </div>
   </div>
 </section>

@@ -7,27 +7,28 @@ import AboutMe from "../components/AboutMe.astro";
 import ContactForm from "../components/ContactForm.astro";
 ---
 
-
-
 <html lang="he" dir="rtl">
-	
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Hebrew-friendly font -->
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
     <title>roeytech.dev</title>
   </head>
 
-  <body class="bg-[rgb(var(--background))] text-[rgb(var(--foreground))] font-sans">
-
-    <Hero/>
-    <div class="border-t border-[rgb(var(--border))] w-full"></div>
-    <WhyWorkWithMe/> 
-    <Qna/>
-    <div class="border-t border-[rgb(var(--border))] w-full"></div>
-    <AboutMe/>
-    <div class="border-t border-[rgb(var(--border))] w-full"></div>
-    <ContactForm action="/api/contact" id="contact"/>
+  <body
+    class="bg-[rgb(var(--background))] font-sans text-[rgb(var(--foreground))]"
+  >
+    <Hero />
+    <div class="w-full border-t border-[rgb(var(--border))]"></div>
+    <WhyWorkWithMe />
+    <Qna />
+    <div class="w-full border-t border-[rgb(var(--border))]"></div>
+    <AboutMe />
+    <div class="w-full border-t border-[rgb(var(--border))]"></div>
+    <ContactForm action="/api/contact" id="contact" />
   </body>
 </html>

@@ -23,7 +23,7 @@ export function initContactForm(formSelector = "[data-contact-form]") {
     input.classList.remove(
       "border-[rgb(var(--border))]",
       "border-green-500",
-      "border-red-500"
+      "border-red-500",
     );
     if (state === true) input.classList.add("border-green-500");
     else if (state === false) input.classList.add("border-red-500");
@@ -69,7 +69,7 @@ export function initContactForm(formSelector = "[data-contact-form]") {
   };
 
   [nameI, emailI, phoneI].forEach((i) =>
-    i.addEventListener("blur", () => validateFieldOnBlur(i))
+    i.addEventListener("blur", () => validateFieldOnBlur(i)),
   );
 
   form.addEventListener("submit", (e) => {
@@ -94,7 +94,7 @@ export function initContactForm(formSelector = "[data-contact-form]") {
         message: msgI.value.trim(),
       },
       null,
-      2
+      2,
     );
     out.classList.remove("hidden");
   });
