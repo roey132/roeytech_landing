@@ -29,8 +29,7 @@ const { title = "שאלות נפוצות" } = Astro.props;
 <section class="px-6 py-14">
   <div class="mx-auto max-w-3xl">
     <h2
-      class="!important mb-6 text-center text-2xl font-semibold text-[rgb(var(--foreground))] md:text-3xl"
-    >
+      class="underline-offset-5 underline decoration-3 decoration-violet-500 mb-6 text-center  text-2xl font-semibold text-[rgb(var(--foreground))] md:text-3xl">
       {title}
     </h2>
 
@@ -38,7 +37,7 @@ const { title = "שאלות נפוצות" } = Astro.props;
       {
         items.map(({ q, a, open }) => (
           <details
-            class="purple-hue group rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--card))]/70 px-5 py-4 text-right transition"
+            class="purple-hue group rounded-2xl border border-[rgb(var(--ring))] bg-[rgb(var(--background))]/70 px-5 py-4 text-right transition"
             {...(open ? { open: true } : {})}
           >
             <summary class="cursor-pointer list-none font-medium text-[rgb(var(--foreground))] select-none">

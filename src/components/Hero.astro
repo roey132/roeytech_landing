@@ -2,7 +2,7 @@
 const {
   title = "תן לעסק לעבוד בשבילך",
   subtitle = `
-בעזרת אוטומציות, אינטגרציות בוטים ומערכות חכמות - העסק שלך ימשיך לפעול, גם כשאתה לא שם.
+בעזרת אוטומציות, אינטגרציות, בוטים ומערכות חכמות - העסק שלך ימשיך לפעול, גם כשאתה לא שם.
 פחות עבודה - יותר תוצאות. 
   `,
   imageSrc = "/images/placeholder-image.png",
@@ -18,13 +18,13 @@ const {
     <!-- text on the visual right -->
     <div class="flex text-right flex-col items-center justify-center">
       <h1
-        class="text-center text-5xl leading-snug font-bold text-[rgb(var(--foreground))] md:text-8xl"
+        class="underline-offset-10 underline decoration-10 decoration-violet-500 text-center text-5xl leading-snug font-bold text-[rgb(var(--foreground))] md:text-8xl"
       >
         {title}
       </h1>
 
       <p
-        class="mt-4 max-w-2xl leading-snug text-center text-2xl text-[rgb(var(--muted))] "
+        class="mt-4 max-w-2xl leading-snug text-center text-2xl text-[rgb(var(--primary))] "
       >
         {subtitle}
       </p>
@@ -33,7 +33,7 @@ const {
       <div class="mt-6 flex flex-wrap justify-center gap-3">
         {
           tags.map((tag: string) => (
-            <span class="rounded-full border border-[rgb(var(--border))] bg-[rgb(var(--card))] px-4 py-1 text-base text-[rgb(var(--foreground))]">
+            <span class="purple-hue rounded-full border border-[rgb(var(--ring))] bg-[rgb(var(--background))] px-4 py-1 text-base text-[rgb(var(--foreground))]">
               {tag}
             </span>
           ))

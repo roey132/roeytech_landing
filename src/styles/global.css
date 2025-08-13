@@ -66,16 +66,16 @@ body {
     border-radius: inherit; /* match parent's rounded corners */
     background: linear-gradient(
       to bottom right,
-      rgba(139, 92, 246, 0.18),
+      rgba(139, 92, 246, 0.35),
       transparent,
-      rgba(124, 58, 237, 0.16)
+      rgba(124, 58, 237, 0.35)
     );
-    opacity: 0.2;
+    opacity: 0.35;
     transition: opacity 0.3s ease;
     pointer-events: none; /* clicks go through */
   }
 
   .purple-hue:hover::before {
-    opacity: 0.4;
+    opacity: 0.5;
   }
 }
