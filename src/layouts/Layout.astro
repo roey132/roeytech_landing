@@ -1,22 +1,46 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import "../styles/global.css";
+import Hero from "../components/Hero.astro";
+import WhyWorkWithMe from "../components/WhyWorkWithMe.astro";
+import Qna from "../components/Qna.astro";
+import AboutMe from "../components/AboutMe.astro";
+import ContactForm from "../components/ContactForm.astro";
+---
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+
+
+<html lang="he" dir="rtl">
+	
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Hebrew-friendly font -->
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>roeytech.dev</title>
+  </head>
+
+  <body class="bg-[rgb(var(--background))] text-[rgb(var(--foreground))] font-sans">
+
+    <Hero
+        imageSrc="/images/placeholder-image.png"
+        title="שכרו אדם אחד, לא סוכנות."
+        subtitle="אני רועי. אני בונה אוטומציות שימושיות, CRM ייחודיים ודאשבורדים לצוותים קטנים."
+        buttonPrimary={{ text: "עובדים איתי", href: "#contact" }}
+        tags={["אוטומציות", "אינטגרציות API", "דאשבורדים", "קודי CRM", "בוטים"]}
+    />
+    <div class="border-t border-[rgb(var(--border))] w-full"></div>
+    <WhyWorkWithMe/> 
+    <Qna
+        title = "שאלות נפוצות",
+        items={[
+            { q: "עם מה אתה עובד?", a: "Astro, Tailwind, אינטגרציות API, ואוטומציות.", open: true },
+            { q: "איך מתחילים?", a: "שיחה קצרה, מיפוי צרכים, הצעת תכנית, ואז מתחילים." },
+            { q: "מה זמן האספקה?", a: "בין ימים לשבועות – תלוי בהיקף. תקבלו עדכונים שוטפים." },
+        ]}
+    />
+    <div class="border-t border-[rgb(var(--border))] w-full"></div>
+    <AboutMe/>
+    <div class="border-t border-[rgb(var(--border))] w-full"></div>
+    <ContactForm action="/api/contact" id="contact"/>
+  </body>
+</html>

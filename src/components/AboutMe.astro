@@ -1,0 +1,54 @@
+---
+const {
+  title = "קצת עליי",
+  description = `
+אני רועי, בונה מערכות ואוטומציות מותאמות אישית לעסקים קטנים ובינוניים.
+אני אוהב לקחת תהליכים ידניים ומסורבלים ולהפוך אותם למערכת חכמה ואוטומטית.
+עם ניסיון בשפות תכנות, אינטגרציות API, CRM מותאם, ודאשבורדים, אני מספק פתרונות
+שמייעלים עבודה, חוסכים זמן, ומפחיתים טעויות.`,
+  skills = ["אוטומציות", "אינטגרציות API", "CRM מותאם", "דאשבורדים", "בוטים"],
+  cta = { text: "דברו איתי", href: "#contact" },
+  imageSrc="/images/placeholder-image.png",
+} = Astro.props;
+---
+
+<section class="py-16 px-6 flex">
+  <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10">
+    
+    <!-- Portrait -->
+    <div class="flex-shrink-0">
+      <div class="aspect-[3/4] max-w-[220px] w-full purple-hue rounded-2xl overflow-hidden shadow-lg">
+        <img
+          src={imageSrc}
+          alt="הפורטרט שלי"
+          class="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+
+    <!-- Text -->
+    <div class="flex-1 text-right">
+      <h2 class="text-3xl font-bold text-[rgb(var(--foreground))] mb-4">{title}</h2>
+      <p class="text-lg text-[rgb(var(--muted))] leading-relaxed mb-6">
+        {description}
+      </p>
+ 
+      <!-- Skills -->
+      {skills.length > 0 && (
+        <div class="flex flex-wrap justify-right gap-3 mb-8">
+          {skills.map((skill:Text) => (
+            <span class="px-4 py-1 rounded-full border border-[rgb(var(--border))] bg-[rgb(var(--card))] text-sm text-[rgb(var(--foreground))]">
+              {skill}
+            </span>
+          ))}
+        </div>
+      )}
+
+      <!-- Call to Action -->
+      <a href={cta.href}
+         class="align-center inline-block px-6 py-3 rounded-lg font-medium bg-[rgb(var(--primary))] text-[rgb(var(--primary-foreground))] hover:opacity-90 transition">
+        {cta.text}
+      </a>
+    </div>
+  </div>
+</section>

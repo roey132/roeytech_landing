@@ -1,0 +1,163 @@
+
+<section id="contact" class="py-16 px-6">
+  <div class="max-w-xl mx-auto purple-hue rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--card))]/70 p-6">
+    <h2 class="text-right text-2xl font-semibold text-[rgb(var(--foreground))] mb-4">צור קשר</h2>
+
+    <form data-contact-form class="space-y-4" dir="rtl" novalidate>
+      <!-- honeypot -->
+      <input type="text" name="company" class="hidden" tabindex="-1" autocomplete="off" />
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        <div class="text-right">
+          <label class="block text-sm mb-1 text-[rgb(var(--muted))]">שם מלא</label>
+          <input
+            data-field="name" name="name" required
+            class="w-full rounded-lg border border-[rgb(var(--border))] bg-transparent px-3 py-2 outline-none focus:ring-2 focus:ring-[rgb(var(--ring))]"
+            placeholder="ישראל ישראלי" autocomplete="name"
+          />
+          <p data-error-for="name" class="mt-1 text-sm text-red-500 hidden">נא להזין שם.</p>
+        </div>
+
+        <div class="text-right">
+          <label class="block text-sm mb-1 text-[rgb(var(--muted))]">אימייל</label>
+          <input
+            data-field="email" name="email" type="email" required
+            class="w-full rounded-lg border border-[rgb(var(--border))] bg-transparent px-3 py-2 outline-none focus:ring-2 focus:ring-[rgb(var(--ring))]"
+            placeholder="you@example.com" autocomplete="email"
+          />
+          <p data-error-for="email" class="mt-1 text-sm text-red-500 hidden">אימייל לא תקין.</p>
+        </div>
+      </div>
+
+      <div class="text-right">
+        <label class="block text-sm mb-1 text-[rgb(var(--muted))]">טלפון</label>
+        <input
+          data-field="phone" name="phone" type="tel" required inputmode="tel" autocomplete="tel" pattern="[0-9+]*" inputmode="numeric"
+          class="w-full rounded-lg border border-[rgb(var(--border))] bg-transparent px-3 py-2 outline-none focus:ring-2 focus:ring-[rgb(var(--ring))]"
+          placeholder="050xxxxxxxx" 
+        />
+        <p data-error-for="phone" class="mt-1 text-sm text-red-500 hidden">מספר טלפון לא תקין.</p>
+      </div>
+
+      <div class="text-right">
+        <label class="block text-sm mb-1 text-[rgb(var(--muted))]">שאלה / פנייה (לא חובה)</label>
+        <textarea
+          data-field="message" name="message" rows="4"
+          class="w-full rounded-lg border border-[rgb(var(--border))] bg-transparent px-3 py-2 outline-none focus:ring-2 focus:ring-[rgb(var(--ring))]"
+          placeholder="ספרו בקצרה מה צריך..."
+        ></textarea>
+      </div>
+
+<!-- Buttons: start gray in HTML -->
+<div class="flex items-center justify-start gap-3">
+  <button type="submit" data-send-btn
+    class="inline-flex items-center justify-center rounded-lg px-5 py-2 font-medium transition bg-gray-400">
+    שליחה
+  </button>
+  <span data-btn-error class="text-sm text-red-500 hidden">יש למלא את כל השדות הדרושים.</span>
+</div>
+
+
+<pre data-output class="mt-6 text-sm overflow-auto rounded-lg border border-[rgb(var(--border))] p-3 bg-[rgb(var(--card))] hidden"></pre>
+</div>
+</section>
+
+<script type="module">
+import { isValidPhone } from '../src/utils/phone.js';
+  const form = document.querySelector('[data-contact-form]');
+  const out  = document.querySelector('[data-output]');
+  const sendBtn  = form.querySelector('[data-send-btn]');
+  const btnError = form.querySelector('[data-btn-error]');
+
+  const q = (sel) => form.querySelector(sel);
+  const nameI  = q('[data-field="name"]');
+  const emailI = q('[data-field="email"]');
+  const phoneI = q('[data-field="phone"]');
+  const msgI   = q('[data-field="message"]');
+  const err = (key) => q(`[data-error-for="${key}"]`);
+
+  const validEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());
+  const validPhoneIL = (v) => isValidPhone(v.trim(), "IL");
+
+  // styling helpers
+  const mark = (input, state) => {
+    input.classList.remove('border-[rgb(var(--border))]','border-green-500','border-red-500');
+    if (state === true) input.classList.add('border-green-500');
+    else if (state === false) input.classList.add('border-red-500');
+    else input.classList.add('border-[rgb(var(--border))]');
+  };
+  const show = (el, on) => el?.classList.toggle('hidden', !on);
+
+  // PURE checkers (no UI side effects) – used for button color only
+  const isNameValid  = () => nameI.value.trim().length > 0;
+  const isEmailValid = () => validEmail(emailI.value.trim());
+  const isPhoneValid = () => validPhoneIL(phoneI.value.trim());
+
+  const allValid = () => isNameValid() && isEmailValid() && isPhoneValid();
+
+  // Update button color WITHOUT showing errors
+  const updateButtonColor = () => {
+    if (allValid()) {
+      sendBtn.classList.remove('bg-gray-400');
+      sendBtn.classList.add('bg-[rgb(var(--primary))]','hover:opacity-90');
+    } else {
+      sendBtn.classList.add('bg-gray-400');
+      sendBtn.classList.remove('bg-[rgb(var(--primary))]','hover:opacity-90');
+    }
+  };
+
+  // Validate a single field on blur (show error + border)
+  const validateFieldOnBlur = (field) => {
+    const value = field.value.trim();
+
+    if (field === nameI) {
+        const ok = value.length > 0;
+        mark(field, ok ? true : false);
+        show(err('name'), !ok);
+    }
+
+    if (field === emailI) {
+      const ok = validEmail(value);
+      mark(field, ok ? true : false);
+      show(err('email'), !ok);
+    }
+
+    if (field === phoneI) {
+      const ok = validPhoneIL(value);
+        mark(field, ok ? true : false);
+      show(err('phone'), !ok);
+    }
+
+    updateButtonColor(); // recolor button after any blur
+  };
+
+  // Hook blur (no validation on load)
+  [nameI, emailI, phoneI].forEach(i => i.addEventListener('blur', () => validateFieldOnBlur(i)));
+
+  // Submit: validate everything and either show errors or “submit” JSON
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (q('input[name="company"]')?.value) return; // honeypot
+
+    // Run field-level validation ONCE here so errors appear if never blurred
+    [nameI, emailI, phoneI].forEach(validateFieldOnBlur);
+
+    if (!allValid()) {
+      btnError.classList.remove('hidden');   // show button-level error
+      out.classList.add('hidden');           // hide JSON
+      return;
+    }
+
+    btnError.classList.add('hidden');
+    out.textContent = JSON.stringify({
+      name: nameI.value.trim(),
+      email: emailI.value.trim(),
+      phone: phoneI.value.trim(),
+      message: msgI.value.trim()
+    }, null, 2);
+    out.classList.remove('hidden');
+  });
+
+  updateButtonColor(); // keeps button gray, but no field errors shown
+</script>
