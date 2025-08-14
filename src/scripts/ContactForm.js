@@ -1,11 +1,28 @@
 // contactForm.js
 import { isValidPhone } from "../utils/phone";
 
+function clearFieldText(input) {
+  input.value = "";
+  input.classList.remove("border-red-500", "border-green-500");
+  input.classList.add("border-[rgb(var(--border))]");
+}
+
+async function sendFormData(data) {
+  const res = await fetch("https://httpbin.org/post", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  return res;
+}
+
 export function initContactForm(formSelector = "[data-contact-form]") {
   const form = document.querySelector(formSelector);
   if (!form) return;
 
-  const out = document.querySelector("[data-output]");
   const sendBtn = form.querySelector("[data-send-btn]");
   const btnError = form.querySelector("[data-btn-error]");
 
@@ -72,31 +89,48 @@ export function initContactForm(formSelector = "[data-contact-form]") {
     i.addEventListener("blur", () => validateFieldOnBlur(i)),
   );
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
     e.stopPropagation();
-    if (q('input[name="company"]')?.value) return; // honeypot
 
     [nameI, emailI, phoneI].forEach(validateFieldOnBlur);
 
     if (!allValid()) {
       btnError.classList.remove("hidden");
-      out.classList.add("hidden");
+      btnError.textContent = "יש למלא את כל השדות הדרושים.";
+      btnError.classList.remove("text-green-500");
+      btnError.classList.add("text-red-500");
       return;
     }
 
     btnError.classList.add("hidden");
-    out.textContent = JSON.stringify(
-      {
-        name: nameI.value.trim(),
-        email: emailI.value.trim(),
-        phone: phoneI.value.trim(),
-        message: msgI.value.trim(),
-      },
-      null,
-      2,
-    );
-    out.classList.remove("hidden");
+    console.log("Form submitted with values:");
+    const data = {
+      name: nameI.value.trim(),
+      email: emailI.value.trim(),
+      phone: phoneI.value.trim(),
+      message: msgI.value.trim(),
+    };
+    sendBtn.disabled = true;
+    const res = await sendFormData(data);
+
+    if (res.ok) {
+      console.log("Form submitted successfully:", data);
+      btnError.classList.remove("hidden");
+      btnError.textContent = "הטופס נשלח בהצלחה!";
+      btnError.classList.add("text-green-500");
+      btnError.classList.remove("text-red-500");
+      [nameI, emailI, phoneI, msgI].forEach((i) => {
+        clearFieldText(i);
+      });
+      updateButtonColor();
+    } else {
+      console.error("Error submitting form:", res.statusText);
+      btnError.classList.remove("hidden");
+      btnError.textContent = "שגיאה בשליחת הטופס, אנא נסו שוב מאוחר יותר.";
+    }
+    await new Promise((resolve) => setTimeout(resolve, 300));
+    sendBtn.disabled = false;
   });
 
   updateButtonColor();

@@ -1,9 +1,9 @@
-<section id="contact" class="px-6 py-16">
+<section id="contact" class="purple-hero px-6 py-16">
   <div
     class="purple-hue mx-auto max-w-xl rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--card))]/70 p-6"
   >
     <h2
-      class="mb-4 text-right text-2xl font-semibold text-[rgb(var(--foreground))]"
+      class="mb-4 text-right text-2xl font-semibold text-[rgb(var(--foreground))] underline decoration-violet-500 decoration-2 underline-offset-2"
     >
       צור קשר
     </h2>
@@ -20,7 +20,8 @@
 
       <div class="grid gap-4 sm:grid-cols-2">
         <div class="text-right">
-          <label class="mb-1 block text-sm text-[rgb(var(--muted))]"
+          <label
+            class="mb-1 block text-base text-[rgb(var(--foreground))] underline decoration-violet-500 decoration-2 underline-offset-2"
             >שם מלא</label
           >
           <input
@@ -31,13 +32,14 @@
             placeholder="ישראל ישראלי"
             autocomplete="name"
           />
-          <p data-error-for="name" class="mt-1 hidden text-sm text-red-500">
+          <p data-error-for="name" class="mt-1 hidden text-base text-red-500">
             נא להזין שם.
           </p>
         </div>
 
         <div class="text-right">
-          <label class="mb-1 block text-sm text-[rgb(var(--muted))]"
+          <label
+            class="mb-1 block text-base text-[rgb(var(--foreground))] underline decoration-violet-500 decoration-2 underline-offset-2"
             >אימייל</label
           >
           <input
@@ -49,14 +51,17 @@
             placeholder="you@example.com"
             autocomplete="email"
           />
-          <p data-error-for="email" class="mt-1 hidden text-sm text-red-500">
+          <p data-error-for="email" class="mt-1 hidden text-base text-red-500">
             אימייל לא תקין.
           </p>
         </div>
       </div>
 
       <div class="text-right">
-        <label class="mb-1 block text-sm text-[rgb(var(--muted))]">טלפון</label>
+        <label
+          class="mb-1 block text-base text-[rgb(var(--foreground))] underline decoration-violet-500 decoration-2 underline-offset-2"
+          >טלפון</label
+        >
         <input
           data-field="phone"
           name="phone"
@@ -69,13 +74,14 @@
           class="w-full rounded-lg border border-[rgb(var(--border))] bg-transparent px-3 py-2 outline-none focus:ring-2 focus:ring-[rgb(var(--ring))]"
           placeholder="050xxxxxxxx"
         />
-        <p data-error-for="phone" class="mt-1 hidden text-sm text-red-500">
+        <p data-error-for="phone" class="mt-1 hidden text-base text-red-500">
           מספר טלפון לא תקין.
         </p>
       </div>
 
       <div class="text-right">
-        <label class="mb-1 block text-sm text-[rgb(var(--muted))]"
+        <label
+          class="mb-1 block text-base text-[rgb(var(--foreground))] underline decoration-violet-500 decoration-2 underline-offset-2"
           >שאלה / פנייה (לא חובה)</label
         >
         <textarea
@@ -91,19 +97,12 @@
         <button
           type="submit"
           data-send-btn
-          class="inline-flex items-center justify-center rounded-lg bg-gray-400 px-5 py-2 font-medium transition"
+          class="inline-flex items-center justify-center rounded-lg bg-gray-400 px-10 py-2 text-xl font-medium transition"
         >
           שליחה
         </button>
-        <span data-btn-error class="hidden text-sm text-red-500"
-          >יש למלא את כל השדות הדרושים.</span
-        >
+        <span data-btn-error class="hidden text-base text-red-500"></span>
       </div>
-
-      <pre
-        data-output
-        class="mt-6 hidden overflow-auto rounded-lg border border-[rgb(var(--border))] bg-[rgb(var(--card))] p-3 text-sm">
-      </pre>
     </form>
   </div>
 
