@@ -27,7 +27,10 @@ const items: TextBlock[] = [
   },
 ];
 
-const { title = "למה לעבוד איתי?" } = Astro.props;
+const {
+  title = "למה לעבוד איתי?",
+  buttonPrimary = { text: "אני מעוניין!", href: "#contact" },
+} = Astro.props;
 ---
 
 <section class="px-6 py-14">
@@ -62,5 +65,13 @@ const { title = "למה לעבוד איתי?" } = Astro.props;
         ))
       }
     </div>
+  </div>
+  <div class="mt-8 flex justify-center gap-4">
+    <a
+      href={buttonPrimary.href}
+      class="p-5px inline-block rounded-lg bg-[rgb(var(--primary))] px-15 py-3 text-xl font-medium text-[rgb(var(--primary-foreground))] transition hover:opacity-90"
+    >
+      {buttonPrimary.text}
+    </a>
   </div>
 </section>
