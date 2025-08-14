@@ -13,18 +13,18 @@ const {
 
 <section class="purple-hero px-6 py-20">
   <div
-    class="md:flex-col mx-auto flex max-w-7xl flex-col items-center justify-center gap-12"
+    class="mx-auto flex max-w-7xl flex-col items-center justify-center gap-12"
   >
     <!-- text on the visual right -->
-    <div class="flex text-right flex-col items-center justify-center">
+    <div class="flex flex-col items-center justify-center text-right">
       <h1
-        class="underline-offset-10 underline decoration-10 decoration-violet-500 text-center text-5xl leading-snug font-bold text-[rgb(var(--foreground))] md:text-8xl"
+        class="text-center text-5xl leading-snug font-bold text-[rgb(var(--foreground))] underline decoration-violet-500 decoration-10 underline-offset-10 md:text-8xl"
       >
         {title}
       </h1>
 
       <p
-        class="mt-4 max-w-2xl leading-snug text-center text-2xl text-[rgb(var(--primary))] "
+        class="mt-4 max-w-2xl text-center text-2xl leading-snug text-[rgb(var(--primary))]"
       >
         {subtitle}
       </p>
@@ -44,7 +44,7 @@ const {
       <div class="mt-8 flex justify-center gap-4">
         <a
           href={buttonPrimary.href}
-          class="inline-block rounded-lg bg-[rgb(var(--primary))] p-5px text-xl  px-15 py-3 font-medium text-[rgb(var(--primary-foreground))] transition hover:opacity-90"
+          class="p-5px inline-block rounded-lg bg-[rgb(var(--primary))] px-15 py-3 text-xl font-medium text-[rgb(var(--primary-foreground))] transition hover:opacity-90"
         >
           {buttonPrimary.text}
         </a>

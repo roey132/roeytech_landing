@@ -6,7 +6,7 @@ type TextBlock = {
 const items: TextBlock[] = [
   {
     heading: "יחס אישי",
-    text: "העבדוה היא רק מולי, בלי בירוקרטיה של סוכנויות וחברות גדולות",
+    text: "העבודה היא רק מולי, בלי בירוקרטיה של סוכנויות וחברות גדולות",
   },
   {
     heading: "התאמה אישית וממוקדת",
@@ -28,7 +28,7 @@ const { title = "למה לעבוד איתי?" } = Astro.props;
 <section class="px-6 py-14">
   <div class="mx-auto max-w-7xl">
     <h2
-      class="underline-offset-5 underline decoration-3 decoration-violet-500 mb-6 text-center text-2xl font-semibold text-[rgb(var(--foreground))] md:text-3xl"
+      class="mb-6 text-center text-2xl font-semibold text-[rgb(var(--foreground))] underline decoration-violet-500 decoration-3 underline-offset-5 md:text-3xl"
     >
       {title}
     </h2>
@@ -36,11 +36,11 @@ const { title = "למה לעבוד איתי?" } = Astro.props;
     <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
       {
         items.map(({ heading, text }) => (
-          <article class="border purple-hue group relative overflow-hidden rounded-2xl border-[rgb(var(--ring))] bg-[rgb(var(--background))]/70 px-6 py-6 text-right shadow-sm">
-            <h3 class="relative underline-offset-5 underline decoration-3 decoration-violet-500 text-center z-10 text-xl font-bold text-[rgb(var(--foreground))] md:text-xl">
+          <article class="purple-hue group relative overflow-hidden rounded-2xl border border-[rgb(var(--ring))] bg-[rgb(var(--background))]/70 px-6 py-6 text-right shadow-sm">
+            <h3 class="relative z-10 text-center text-xl font-bold text-[rgb(var(--foreground))] underline decoration-violet-500 decoration-3 underline-offset-5 md:text-xl">
               {heading}
             </h3>
-            <p class="text-md text-center relative z-10 mt-1 text-[rgb(var(--foreground))]">
+            <p class="text-md relative z-10 mt-1 text-center text-[rgb(var(--foreground))]">
               {text}
             </p>
           </article>

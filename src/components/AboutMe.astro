@@ -1,11 +1,12 @@
 ---
 const {
-  title = "קצת עליי",
+  title = "מי אני?",
   description = `
-אני רועי, בונה מערכות ואוטומציות מותאמות אישית לעסקים קטנים ובינוניים.
-אני אוהב לקחת תהליכים ידניים ומסורבלים ולהפוך אותם למערכת חכמה ואוטומטית.
-עם ניסיון בשפות תכנות, אינטגרציות API, CRM מותאם, ודאשבורדים, אני מספק פתרונות
-שמייעלים עבודה, חוסכים זמן, ומפחיתים טעויות.`,
+אני רועי – בונה מערכות ואוטומציות חכמות לעסקים קטנים ובינוניים.
+אני לוקח תהליכים ידניים, איטיים ומסורבלים, וממיר אותם למערכות אוטומטיות ויעילות שמביאות תוצאות.
+עם ניסיון של מעל 5 שנים בפיתוח מערכות, גם בחברות פרטיות וגם חברות גדולות כמו בנקים וחברות הביטוח מהמובילים בארץ,
+וכן מומחיות בתכנות, אינטגרציות API, בניית מערכות CRM מותאמות אישית ופיתוח דאשבורדים מתקדמים –
+אני מספק פתרונות שמייעלים עבודה, חוסכים זמן, ומפחיתים טעויות – כדי שהעסק יעבוד בשבילך, ולא להפך.`,
   skills = ["אוטומציות", "אינטגרציות API", "CRM מותאם", "דאשבורדים", "בוטים"],
   cta = { text: "דברו איתי", href: "#contact" },
   imageSrc = "/images/placeholder-image.png",
@@ -28,20 +29,22 @@ const {
     </div>
 
     <!-- Text -->
-    <div class="flex-1 text-right">
-      <h2 class="mb-4 text-3xl font-bold text-[rgb(var(--foreground))]">
+    <div class="flex-col text-center md:text-right">
+      <h2
+        class="mb-4 text-4xl font-bold text-[rgb(var(--foreground))] underline decoration-violet-500 decoration-2 underline-offset-4"
+      >
         {title}
       </h2>
-      <p class="mb-6 text-lg leading-relaxed text-[rgb(var(--muted))]">
+      <p class="mb-6 text-xl leading-relaxed text-[rgb(var(--foreground))]">
         {description}
       </p>
 
       <!-- Skills -->
       {
         skills.length > 0 && (
-          <div class="justify-right mb-8 flex flex-wrap gap-3">
+          <div class="align-center mb-8 flex flex-wrap justify-center gap-3 md:justify-start">
             {skills.map((skill: Text) => (
-              <span class="purple-hue rounded-full border border-[rgb(var(--ring))] bg-[rgb(var(--background))] px-4 py-1 text-sm text-[rgb(var(--foreground))]">
+              <span class="purple-hue rounded-full border border-[rgb(var(--ring))] bg-[rgb(var(--background))] px-4 py-1 text-base text-[rgb(var(--foreground))]">
                 {skill}
               </span>
             ))}
@@ -52,7 +55,7 @@ const {
       <!-- Call to Action -->
       <a
         href={cta.href}
-        class="align-center inline-block rounded-lg bg-[rgb(var(--primary))] px-6 py-3 font-medium text-[rgb(var(--primary-foreground))] transition hover:opacity-90"
+        class="align-center inline-block rounded-lg bg-[rgb(var(--primary))] px-10 py-3 text-xl font-medium text-[rgb(var(--primary-foreground))] transition hover:opacity-90"
       >
         {cta.text}
       </a>
