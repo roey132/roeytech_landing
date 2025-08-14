@@ -8,7 +8,7 @@ function clearFieldText(input) {
 }
 
 async function sendFormData(data) {
-  const res = await fetch("https://httpbin.org/post", {
+  const res = await fetch("https://landingapi.dev/lead", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
