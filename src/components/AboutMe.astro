@@ -1,27 +1,23 @@
 ---
 const {
-  title = "מי אני?",
+  title = "נעים להכיר 👋",
   description = `
-אני רועי – בונה מערכות ואוטומציות חכמות לעסקים קטנים ובינוניים.
-אני לוקח תהליכים ידניים, איטיים ומסורבלים, וממיר אותם למערכות אוטומטיות ויעילות שמביאות תוצאות.
-עם ניסיון של מעל 5 שנים בפיתוח מערכות, גם בחברות פרטיות וגם חברות גדולות כמו בנקים וחברות הביטוח מהמובילים בארץ,
-וכן מומחיות בתכנות, אינטגרציות API, בניית מערכות CRM מותאמות אישית ופיתוח דאשבורדים מתקדמים –
-אני מספק פתרונות שמייעלים עבודה, חוסכים זמן, ומפחיתים טעויות – כדי שהעסק יעבוד בשבילך, ולא להפך.`,
-  skills = [
-    "איסוף נתונים",
-    "אוטומציות",
-    "אינטגרציות API",
-    "CRM",
-    "דאשבורדים",
-    "ניתוח נתונים",
-    "פיתוח בוטים",
-    "מערכות מותאמות אישית",
-    "ייעול תהליכים",
-    "חיבור מערכות",
-    "פיתוח מערכות",
-  ],
+אני רועי, בן 25 וגר בבנגקוק. אחרי שלוש שנים ביחידה טכנולוגית בצבא ועוד שנתיים וחצי בהייטק,
+שכוללות עבודה עם חברות מובילות בארץ כמו: מטריקס, בנק הפועלים, הראל ביטוחי בריאות ועוד.
+בדרך צברתי ניסיון מעשי ומעמיק בפיתוח ובבניית פתרונות שמניעים עסקים קדימה.
+  `,
+  whyNowTitle = "למה דווקא עכשיו?",
+  whyNowText = `
+ החלטתי שהגיע הזמן לתרגם את הידע והניסיון שלי לערך ישיר עבור בעלי עסקים:
+לגדול חכם, לייעל תהליכים ולפשט את היום-יום באמצעות טכנולוגיה שמתאימה בדיוק לעסק שלך.
+  `,
+  growTitle = "בואו נצמח ביחד 🌱",
+  growText = `
+אני כאן כדי להבין את המטרות שלך ולבנות פתרון טכנולוגי מותאם אישית.
+אם את/ה מחפש/ת שותף טכנולוגי עם מבט עסקי — בואו נדבר.
+  `,
   cta = { text: "דברו איתי", href: "#contact" },
-  imageSrc = "/images/placeholder-image.png",
+  imageSrc = "/images/whoami-image.jpeg",
 } = Astro.props;
 ---
 
@@ -30,39 +26,39 @@ const {
     <!-- Portrait -->
     <div class="flex-shrink-0">
       <div
-        class="purple-hue aspect-[3/4] w-full max-w-[220px] overflow-hidden rounded-2xl shadow-lg"
+        class="purple-hue aspect-[3/4] w-full max-w-[280px] overflow-hidden rounded-2xl shadow-lg"
       >
-        <img
-          src={imageSrc}
-          alt="הפורטרט שלי"
-          class="h-full w-full object-cover"
-        />
+        <img src={imageSrc} class="h-full w-full object-cover" loading="lazy" />
       </div>
     </div>
 
     <!-- Text -->
-    <div class="flex-col text-center md:text-right">
+    <div class="flex-col text-center md:text-right" dir="rtl">
+      <!-- Intro -->
       <h2
         class="mb-4 text-4xl font-bold text-[rgb(var(--foreground))] underline decoration-violet-500 decoration-2 underline-offset-4"
       >
         {title}
       </h2>
-      <p class="mb-6 text-xl leading-relaxed text-[rgb(var(--foreground))]">
+      <p class="mb-8 text-xl leading-relaxed text-[rgb(var(--foreground))]">
         {description}
       </p>
 
-      <!-- Skills -->
-      {
-        skills.length > 0 && (
-          <div class="align-center mb-8 flex flex-wrap justify-center gap-3 md:justify-start">
-            {skills.map((skill: Text) => (
-              <span class="rounded-md border border-[rgb(var(--ring))]/50 px-2 py-0.5 text-sm text-[rgb(var(--muted-foreground))]">
-                {skill}
-              </span>
-            ))}
-          </div>
-        )
-      }
+      <!-- Why Now -->
+      <h3 class="mb-3 text-2xl font-semibold text-[rgb(var(--foreground))]">
+        {whyNowTitle}
+      </h3>
+      <p class="mb-8 text-lg leading-relaxed text-[rgb(var(--foreground))]">
+        {whyNowText}
+      </p>
+
+      <!-- Grow Together -->
+      <h3 class="mb-3 text-2xl font-semibold text-[rgb(var(--foreground))]">
+        {growTitle}
+      </h3>
+      <p class="mb-8 text-lg leading-relaxed text-[rgb(var(--foreground))]">
+        {growText}
+      </p>
 
       <!-- Call to Action -->
       <a
