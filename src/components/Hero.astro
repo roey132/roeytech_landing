@@ -1,12 +1,13 @@
 ---
 const {
-  title = "תן לעסק לעבוד בשבילך",
+  title = "תנו לעסק לעבוד בשבילכם",
   subtitle = `
 בעזרת אוטומציות, אינטגרציות, בוטים ומערכות חכמות - העסק שלך ימשיך לפעול, גם כשאתה לא שם.
 פחות עבודה - יותר תוצאות. 
   `,
   imageSrc = "/images/placeholder-image.png",
   buttonPrimary = { text: "בואו נתחיל יחד", href: "#contact" },
+  buttonSecondary = { text: "ראו פרוייקטים", href: "#projects" },
   tags = ["אוטומציות", "אינטגרציות", "בוטים", "עיבוד נתונים", "התאמה אישית"],
 } = Astro.props;
 ---
@@ -33,7 +34,7 @@ const {
       <div class="mt-6 flex flex-wrap justify-center gap-3">
         {
           tags.map((tag: string) => (
-            <span class="purple-hue rounded-full border border-[rgb(var(--ring))] bg-[rgb(var(--background))] px-4 py-1 text-base text-[rgb(var(--foreground))]">
+            <span class="rounded-md border border-[rgb(var(--ring))]/50 px-2 py-0.5 text-sm text-[rgb(var(--muted-foreground))]">
               {tag}
             </span>
           ))
@@ -44,9 +45,15 @@ const {
       <div class="mt-8 flex justify-center gap-4">
         <a
           href={buttonPrimary.href}
-          class="p-5px inline-block rounded-lg bg-[rgb(var(--primary))] px-15 py-3 text-xl font-medium text-[rgb(var(--primary-foreground))] transition hover:opacity-90"
+          class="p-5px inline-block rounded-lg bg-[rgb(var(--primary))] px-3 py-3 text-xl font-medium text-[rgb(var(--primary-foreground))] transition hover:opacity-90"
         >
           {buttonPrimary.text}
+        </a>
+        <a
+          href={buttonSecondary.href}
+          class="p-5px inline-block rounded-lg bg-[rgb(var(--muted))] px-3 py-3 text-xl font-medium text-[rgb(var(--primary-foreground))] transition hover:opacity-90"
+        >
+          {buttonSecondary.text}
         </a>
       </div>
     </div>

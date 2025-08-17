@@ -1,0 +1,57 @@
+---
+import { Phone, Mail, MessageCircleMore } from "lucide-astro";
+
+interface Props {
+  whatsapp?: string; // WhatsApp phone in international format, e.g. "1234567890"
+  email?: string; // Email address
+  phone?: string; // Phone number e.g. "+1234567890"
+  message?: string; // Optional prefilled message for WhatsApp
+}
+
+const {
+  whatsapp = "+972557294597",
+  email = "roeytechdev@gmail.com",
+  phone = "+972557294597",
+  message = "Hello!",
+} = Astro.props;
+---
+
+<div class="flex items-center justify-center gap-6 py-6">
+  <!-- WhatsApp -->
+  <span class="flex w-20 flex-col items-center justify-center">
+    <a
+      href={`https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="rounded-full bg-green-500 p-3 text-[rgb(var(--foreground))] transition hover:opacity-90"
+      aria-label="WhatsApp"
+    >
+      <MessageCircleMore class="h-6 w-6" />
+    </a>
+    <h1 class="text-base text-[rgb(var(--foreground))]">WhatsApp</h1>
+  </span>
+
+  <!-- Email -->
+  <span class="flex w-20 flex-col items-center justify-center">
+    <a
+      href={`mailto:${email}`}
+      class="rounded-full bg-blue-500 p-3 text-[rgb(var(--foreground))] transition hover:opacity-90"
+      aria-label="Email"
+    >
+      <Mail class="h-6 w-6" />
+    </a>
+    <h1 class="text-base text-[rgb(var(--foreground))]">אימייל</h1>
+  </span>
+
+  <!-- Phone -->
+  <span class="flex w-20 flex-col items-center justify-center">
+    <a
+      href={`tel:${phone}`}
+      class="rounded-full bg-purple-500 p-3 text-[rgb(var(--foreground))] transition hover:opacity-90"
+      aria-label="Phone"
+    >
+      <Phone class="h-6 w-6" />
+    </a>
+    <h1 class="text-base text-[rgb(var(--foreground))]">טלפון</h1>
+  </span>
+</div>

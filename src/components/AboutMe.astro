@@ -7,7 +7,19 @@ const {
 עם ניסיון של מעל 5 שנים בפיתוח מערכות, גם בחברות פרטיות וגם חברות גדולות כמו בנקים וחברות הביטוח מהמובילים בארץ,
 וכן מומחיות בתכנות, אינטגרציות API, בניית מערכות CRM מותאמות אישית ופיתוח דאשבורדים מתקדמים –
 אני מספק פתרונות שמייעלים עבודה, חוסכים זמן, ומפחיתים טעויות – כדי שהעסק יעבוד בשבילך, ולא להפך.`,
-  skills = ["אוטומציות", "אינטגרציות API", "CRM מותאם", "דאשבורדים", "בוטים"],
+  skills = [
+    "איסוף נתונים",
+    "אוטומציות",
+    "אינטגרציות API",
+    "CRM",
+    "דאשבורדים",
+    "ניתוח נתונים",
+    "פיתוח בוטים",
+    "מערכות מותאמות אישית",
+    "ייעול תהליכים",
+    "חיבור מערכות",
+    "פיתוח מערכות",
+  ],
   cta = { text: "דברו איתי", href: "#contact" },
   imageSrc = "/images/placeholder-image.png",
 } = Astro.props;
@@ -44,7 +56,7 @@ const {
         skills.length > 0 && (
           <div class="align-center mb-8 flex flex-wrap justify-center gap-3 md:justify-start">
             {skills.map((skill: Text) => (
-              <span class="purple-hue rounded-full border border-[rgb(var(--ring))] bg-[rgb(var(--background))] px-4 py-1 text-base text-[rgb(var(--foreground))]">
+              <span class="rounded-md border border-[rgb(var(--ring))]/50 px-2 py-0.5 text-sm text-[rgb(var(--muted-foreground))]">
                 {skill}
               </span>
             ))}

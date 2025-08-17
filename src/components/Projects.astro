@@ -1,0 +1,104 @@
+---
+interface Project {
+  title: string;
+  summary: string;
+  img: string; // path under /public (e.g., /images/project1.jpg)
+  tags?: string[];
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  cols?: 2 | 3; // default 3 on lg
+  rtl?: boolean; // default true (Hebrew)
+}
+const buttonPrimary = { text: "נשמע מעניין!", href: "#contact" };
+
+const {
+  title = "פרויקטים נבחרים לדוגמה",
+  cols = 3,
+  rtl = true,
+} = Astro.props as Props;
+
+const projects: Project[] = [
+  {
+    title: "שמירת מידע היסטורי",
+    summary:
+      "הקמת מערכת לשמירת מידע היסטורי ממערכות שונות, כולל סנכרון נתונים בין מערכות לצורך ניתוח מתקדם של העסק.",
+    img: "/images/data-history-image.png",
+    tags: ["אנאליטיקה", "מסד נתונים", "סנכרון"],
+  },
+  {
+    title: "הקמת סביבת אוטומציות פרטית",
+    summary:
+      "סביבת אוטומציות מקצועית ללא הגבלת הרצות ותהליכים בניגוד לרוב הכלים בשוק המאפשרת לססטם את העסק בצורה דינאמית ונוחה.",
+    img: "/images/automation-image.png",
+    tags: ["אוטומציות", "סביבה פרטית", "N8N"],
+  },
+  {
+    title: "חיבור אתר למערכת CRM",
+    summary:
+      "חיבור דף נחיתה למערכת CRM מותאמת אישית הכוללת איסוף נתונים ומעקב אחר לקוחות פוטנציאליים.",
+    img: "/images/crm-image.png",
+    tags: ["CRM", "איסוף נתונים", "דף נחיתה"],
+  },
+];
+---
+
+<section
+  id="projects"
+  class="mx-auto max-w-6xl px-4 text-center sm:px-6 lg:px-8"
+  dir={rtl ? "rtl" : "ltr"}
+>
+  <header class="align-center mb-8">
+    <h2
+      class="mb-4 text-4xl font-bold text-[rgb(var(--foreground))] underline decoration-violet-500 decoration-2 underline-offset-4"
+    >
+      {title}
+    </h2>
+  </header>
+
+  <div
+    class={`grid gap-6 sm:gap-8 grid-cols-1 ${cols === 2 ? "lg:grid-cols-2" : "lg:grid-cols-3"}`}
+  >
+    {
+      projects.map((p) => (
+        <article class="purple-hue group overflow-hidden rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--card))]/70">
+          <div class="relative">
+            <img src={p.img} loading="lazy" class="h-44 w-full object-cover" />
+          </div>
+
+          <div class="p-5">
+            <h3 class="text-lg font-medium text-[rgb(var(--foreground))]">
+              {p.title}
+            </h3>
+            <p class="mt-2 leading-relaxed text-[rgb(var(--muted))]">
+              {p.summary}
+            </p>
+
+            {p.tags?.length ? (
+              <ul class="align-center mt-4 flex flex-wrap justify-center gap-2">
+                {/* Render tags */}
+                {p.tags.map((t) => (
+                  <li class="shrink-0">
+                    <span class="rounded-md bg-[rgb(var(--muted))]/15 px-2.5 py-0.5 text-xs text-[rgb(var(--muted-foreground))]">
+                      #{t}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </div>
+        </article>
+      ))
+    }
+  </div>
+  <div class="mt-8 flex justify-center gap-4">
+    <a
+      href={buttonPrimary.href}
+      class="p-5px inline-block rounded-lg bg-[rgb(var(--primary))] px-15 py-3 text-xl font-medium text-[rgb(var(--primary-foreground))] transition hover:opacity-90"
+    >
+      {buttonPrimary.text}
+    </a>
+  </div>
+</section>
