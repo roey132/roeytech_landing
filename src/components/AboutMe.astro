@@ -23,59 +23,67 @@ const {
 ---
 
 <section class="flex px-6 py-16" id="about-me">
-  <div class="mx-auto flex max-w-5xl flex-col items-center gap-10 md:flex-row">
-    <!-- Portrait -->
-    <div class="flex-shrink-0">
-      <div
-        class="purple-hue aspect-[3/4] w-full max-w-[280px] overflow-hidden rounded-2xl shadow-lg"
-      >
-        <img src={imageSrc} class="h-full w-full object-cover" loading="lazy" />
+  <div class="mx-auto flex-col items-center gap-5">
+    <!-- Intro -->
+    <h2
+      class="mb-4 text-center text-4xl font-bold text-[rgb(var(--foreground))] underline decoration-violet-500 decoration-2 underline-offset-4"
+    >
+      {title}
+    </h2>
+    <div
+      class="mx-auto flex max-w-5xl flex-col items-center gap-10 md:flex-row"
+    >
+      <!-- Portrait -->
+      <div class="flex-shrink-0">
+        <div
+          class="purple-hue aspect-[3/4] w-full max-w-[280px] overflow-hidden rounded-2xl shadow-lg"
+        >
+          <img
+            src={imageSrc}
+            class="h-full w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="flex-col text-center md:text-right" dir="rtl">
+        <p class="mb-8 text-xl leading-relaxed text-[rgb(var(--foreground))]">
+          {description}
+        </p>
+
+        <!-- Why Now -->
+        <h3 class="mb-3 text-2xl font-semibold text-[rgb(var(--foreground))]">
+          {whyNowTitle}
+        </h3>
+        <p class="mb-8 text-lg leading-relaxed text-[rgb(var(--foreground))]">
+          {whyNowText}
+        </p>
+
+        <!-- Grow Together -->
+        <h3 class="mb-3 text-2xl font-semibold text-[rgb(var(--foreground))]">
+          {growTitle}
+        </h3>
+        <p class="mb-8 text-lg leading-relaxed text-[rgb(var(--foreground))]">
+          {growText}
+        </p>
+
+        <!-- Call to Action -->
       </div>
     </div>
-
-    <!-- Text -->
-    <div class="flex-col text-center md:text-right" dir="rtl">
-      <!-- Intro -->
-      <h2
-        class="mb-4 text-4xl font-bold text-[rgb(var(--foreground))] underline decoration-violet-500 decoration-2 underline-offset-4"
+    <div class="flex justify-center gap-5">
+      <a
+        href={cta.href}
+        class="align-center inline-block rounded-lg bg-[rgb(var(--primary))] px-10 py-3 text-xl font-medium text-[rgb(var(--primary-foreground))] transition hover:opacity-90"
       >
-        {title}
-      </h2>
-      <p class="mb-8 text-xl leading-relaxed text-[rgb(var(--foreground))]">
-        {description}
-      </p>
-
-      <!-- Why Now -->
-      <h3 class="mb-3 text-2xl font-semibold text-[rgb(var(--foreground))]">
-        {whyNowTitle}
-      </h3>
-      <p class="mb-8 text-lg leading-relaxed text-[rgb(var(--foreground))]">
-        {whyNowText}
-      </p>
-
-      <!-- Grow Together -->
-      <h3 class="mb-3 text-2xl font-semibold text-[rgb(var(--foreground))]">
-        {growTitle}
-      </h3>
-      <p class="mb-8 text-lg leading-relaxed text-[rgb(var(--foreground))]">
-        {growText}
-      </p>
-
-      <!-- Call to Action -->
-      <div class="flex justify-center gap-5 md:justify-end">
-        <a
-          href={cta.href}
-          class="align-center inline-block rounded-lg bg-[rgb(var(--primary))] px-10 py-3 text-xl font-medium text-[rgb(var(--primary-foreground))] transition hover:opacity-90"
-        >
-          {cta.text}
-        </a>
-        <a
-          href={projectsbtn.href}
-          class="align-center inline-block rounded-lg bg-[rgb(var(--muted))] px-2 py-3 text-xl font-medium text-[rgb(var(--primary-foreground))] transition hover:opacity-90"
-        >
-          {projectsbtn.text}
-        </a>
-      </div>
+        {cta.text}
+      </a>
+      <a
+        href={projectsbtn.href}
+        class="align-center inline-block rounded-lg bg-[rgb(var(--muted))] px-2 py-3 text-xl font-medium text-[rgb(var(--primary-foreground))] transition hover:opacity-90"
+      >
+        {projectsbtn.text}
+      </a>
     </div>
   </div>
 </section>
