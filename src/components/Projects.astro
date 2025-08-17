@@ -65,23 +65,22 @@ const projects: Project[] = [
       projects.map((p) => (
         <article class="purple-hue group overflow-hidden rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--card))]/70">
           <div class="relative">
-            <img src={p.img} loading="lazy" class="h-44 w-full object-cover" />
+            <img src={p.img} class="h-44 w-full object-cover" />
           </div>
 
           <div class="p-5">
-            <h3 class="text-lg font-medium text-[rgb(var(--foreground))]">
+            <h3 class="text-xl font-medium text-[rgb(var(--foreground))] underline decoration-violet-500 decoration-1 underline-offset-2">
               {p.title}
             </h3>
-            <p class="mt-2 leading-relaxed text-[rgb(var(--muted))]">
+            <p class="mt-2 leading-relaxed text-[rgb(var(--foreground))]">
               {p.summary}
             </p>
 
             {p.tags?.length ? (
               <ul class="align-center mt-4 flex flex-wrap justify-center gap-2">
-                {/* Render tags */}
                 {p.tags.map((t) => (
                   <li class="shrink-0">
-                    <span class="rounded-md bg-[rgb(var(--muted))]/15 px-2.5 py-0.5 text-xs text-[rgb(var(--muted-foreground))]">
+                    <span class="rounded-md bg-[rgb(var(--muted))]/15 px-2.5 py-0.5 text-base text-[rgb(var(--muted-foreground))]">
                       #{t}
                     </span>
                   </li>

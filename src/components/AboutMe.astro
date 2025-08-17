@@ -14,14 +14,15 @@ const {
   growTitle = "בואו נצמח ביחד 🌱",
   growText = `
 אני כאן כדי להבין את המטרות שלך ולבנות פתרון טכנולוגי מותאם אישית.
-אם את/ה מחפש/ת שותף טכנולוגי עם מבט עסקי — בואו נדבר.
+אם את/ה מחפש/ת שותף טכנולוגי עם מבט עסקי - בואו נדבר.
   `,
   cta = { text: "דברו איתי", href: "#contact" },
+  projectsbtn = { text: "ראו פרוייקטים", href: "#projects" },
   imageSrc = "/images/whoami-image.jpeg",
 } = Astro.props;
 ---
 
-<section class="flex px-6 py-16">
+<section class="flex px-6 py-16" id="about-me">
   <div class="mx-auto flex max-w-5xl flex-col items-center gap-10 md:flex-row">
     <!-- Portrait -->
     <div class="flex-shrink-0">
@@ -61,12 +62,20 @@ const {
       </p>
 
       <!-- Call to Action -->
-      <a
-        href={cta.href}
-        class="align-center inline-block rounded-lg bg-[rgb(var(--primary))] px-10 py-3 text-xl font-medium text-[rgb(var(--primary-foreground))] transition hover:opacity-90"
-      >
-        {cta.text}
-      </a>
+      <div class="flex justify-center gap-5 md:justify-end">
+        <a
+          href={cta.href}
+          class="align-center inline-block rounded-lg bg-[rgb(var(--primary))] px-10 py-3 text-xl font-medium text-[rgb(var(--primary-foreground))] transition hover:opacity-90"
+        >
+          {cta.text}
+        </a>
+        <a
+          href={projectsbtn.href}
+          class="align-center inline-block rounded-lg bg-[rgb(var(--muted))] px-2 py-3 text-xl font-medium text-[rgb(var(--primary-foreground))] transition hover:opacity-90"
+        >
+          {projectsbtn.text}
+        </a>
+      </div>
     </div>
   </div>
 </section>
