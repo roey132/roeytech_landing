@@ -73,12 +73,14 @@ const {
     </div>
     <div class="flex justify-center gap-5">
       <a
+        onclick="gtag('event', 'contact_click_aboutme')"
         href={cta.href}
         class="align-center inline-block rounded-lg bg-[rgb(var(--primary))] px-10 py-3 text-xl font-medium text-[rgb(var(--primary-foreground))] transition hover:opacity-90"
       >
         {cta.text}
       </a>
       <a
+        onclick="gtag('event', 'projects_click_aboutme')"
         href={projectsbtn.href}
         class="align-center inline-block rounded-lg bg-[rgb(var(--muted))] px-2 py-3 text-xl font-medium text-[rgb(var(--primary-foreground))] transition hover:opacity-90"
       >

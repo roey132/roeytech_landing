@@ -29,6 +29,7 @@ import ContactIcons from "./ContactIcons.astro";
             >שם מלא</label
           >
           <input
+            onclick="gtag('event', 'fill_name_click')"
             data-field="name"
             name="name"
             required
@@ -47,6 +48,7 @@ import ContactIcons from "./ContactIcons.astro";
             >אימייל</label
           >
           <input
+            onclick="gtag('event', 'fill_email_click')"
             data-field="email"
             name="email"
             type="email"
@@ -67,6 +69,7 @@ import ContactIcons from "./ContactIcons.astro";
           >טלפון</label
         >
         <input
+          onclick="gtag('event', 'fill_phone_click')"
           data-field="phone"
           name="phone"
           type="tel"
@@ -89,6 +92,7 @@ import ContactIcons from "./ContactIcons.astro";
           >שאלה / פנייה (לא חובה)</label
         >
         <textarea
+          onclick="gtag('event', 'fill_message_click')"
           data-field="message"
           name="message"
           rows="4"
@@ -99,6 +103,7 @@ import ContactIcons from "./ContactIcons.astro";
       <!-- Buttons: start gray in HTML -->
       <div class="flex items-center justify-start gap-3">
         <button
+          onclick="gtag('event', 'send_form_click')"
           type="submit"
           data-send-btn
           class="inline-flex items-center justify-center rounded-lg bg-gray-400 px-10 py-2 text-xl font-medium transition"
