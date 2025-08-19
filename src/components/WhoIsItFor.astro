@@ -1,0 +1,74 @@
+---
+// components/WhoIsItFor.astro (TypeScript)
+
+type Persona = {
+  title: string;
+  text: string;
+};
+
+interface Props {
+  title?: string;
+  personas?: Persona[];
+}
+
+const defaultPersonas: Persona[] = [
+  {
+    title: "יזמים ובעלי עסקים קטנים",
+    text: "רוצים לגדול בלי להישאב לניהול יומיומי? אוטומציות משחררות זמן להתמקד בהכנסות וצמיחה.",
+  },
+  {
+    title: "חברות בצמיחה",
+    text: "צוותים מתרחבים, עומסים ותהליכים מרובים - אוטומציות מסדרות את הכאוס ומונעות צווארי בקבוק.",
+  },
+  {
+    title: "אנשי שיווק ומכירות",
+    text: "אף ליד לא נופל בין הכיסאות: קליטה, תיעוד ומעקב אוטומטי לכל הזדמנות - יותר המרות, פחות בזבוז.",
+  },
+  {
+    title: "ארגונים מבוססים",
+    text: "שליטה ושקיפות מקצה לקצה: חיבור מערכות, נתונים במקום אחד ולוחות מחוונים שמראים מה באמת עובד.",
+  },
+  {
+    title: "עסקים דיגיטליים",
+    text: "חנות אונליין, קורסים דיגיטליים או תוכן שוטף? אוטומציות דואגות לכל התזרים - מקבלת לידים ועד חיוב ותמיכה.",
+  },
+];
+
+const { title = "למי זה מתאים?", personas = defaultPersonas } =
+  Astro.props as Props;
+---
+
+<section id="who-is-it-for" class="px-6 py-16">
+  <div class="mx-auto max-w-6xl" dir="rtl">
+    <header class="mb-10 text-center">
+      <h2
+        class="text-3xl font-bold text-[rgb(var(--foreground))] underline decoration-violet-500 decoration-4 underline-offset-8 md:text-4xl"
+      >
+        {title}
+      </h2>
+    </header>
+
+    <div class="flex flex-wrap justify-center gap-6">
+      {
+        personas.map(({ title, text }) => (
+          <article class="purple-hue flex shrink-0 grow-0 basis-full flex-col justify-between rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--card))]/70 p-6 text-center sm:basis-[280px] lg:basis-[300px]">
+            <div>
+              <h3 class="mb-2 text-xl font-semibold text-[rgb(var(--foreground))] underline decoration-violet-500 decoration-2 underline-offset-4">
+                {title}
+              </h3>
+              <p class="mb-4 leading-relaxed text-[rgb(var(--foreground))]">
+                {text}
+              </p>
+            </div>
+            <a
+              href="#contact"
+              class="mt-4 inline-block rounded-full bg-[rgb(var(--primary))] px-6 py-2 font-semibold text-[rgb(var(--primary-foreground))] transition-colors hover:bg-violet-700"
+            >
+              זה אני
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
