@@ -112,6 +112,7 @@ export function initContactForm(formSelector = "[data-contact-form]") {
       message: msgI.value.trim(),
     };
     sendBtn.disabled = true;
+try {
     const res = await sendFormData(data);
 
     if (res.ok) {
@@ -128,10 +129,20 @@ export function initContactForm(formSelector = "[data-contact-form]") {
       console.error("Error submitting form:", res.statusText);
       btnError.classList.remove("hidden");
       btnError.textContent = "שגיאה בשליחת הטופס, אנא נסו שוב מאוחר יותר.";
+      btnError.classList.remove("text-green-500");
+      btnError.classList.add("text-red-500");
     }
-    await new Promise((resolve) => setTimeout(resolve, 300));
-    sendBtn.disabled = false;
-  });
+  } catch (err) {
+    console.error("Network or unexpected error:", err);
+    btnError.classList.remove("hidden");
+    btnError.textContent = "שגיאה בשליחת הטופס, אנא נסו שוב מאוחר יותר.";
+    btnError.classList.remove("text-green-500");
+    btnError.classList.add("text-red-500");
+  }
+
+  await new Promise((resolve) => setTimeout(resolve, 300));
+  sendBtn.disabled = false;
+});
 
   updateButtonColor();
 }
