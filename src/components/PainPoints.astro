@@ -94,6 +94,7 @@ const {
       {
         items.map(({ title, description, hook }) => (
           <article
+            onclick="gtag('event', 'checkbox_click_painpoints')"
             data-card
             class="group relative flex max-w-full shrink-0 grow-0 basis-full cursor-pointer flex-col justify-between rounded-2xl border-2 border-[rgb(var(--border))] bg-[rgb(var(--card))]/70 p-5 transition focus-within:border-[rgb(var(--ring))] hover:border-[rgb(var(--ring))] hover:shadow-lg sm:max-w-[320px] sm:basis-[320px] lg:max-w-[340px] lg:basis-[340px]"
             tabindex="0"
@@ -132,7 +133,7 @@ const {
       class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
     >
       <a
-        onclick="window.gtag && gtag('event', 'contact_click_painpoints')"
+        onclick="gtag('event', 'contact_click_painpoints')"
         href={cta.href}
         class="inline-block rounded-lg bg-[rgb(var(--primary))] px-6 py-3 text-lg font-medium text-[rgb(var(--primary-foreground))] transition hover:opacity-90"
       >
