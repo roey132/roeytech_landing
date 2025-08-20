@@ -4,14 +4,16 @@
 
 <div
   id="cookie-consent"
-  class="fixed right-0 bottom-0 left-0 z-50 hidden items-center justify-between border-t border-[rgb(var(--border))] bg-[rgb(var(--background))] p-4 text-sm"
+  class="fixed right-0 bottom-0 left-0 z-50 hidden items-center justify-between border-t border-[rgb(var(--border))] bg-[rgb(var(--foreground))] p-4 text-base text-[rgb(var(--background))] shadow-lg"
 >
-  <span>We use cookies for analytics. Do you accept?</span>
+  <span class="flex-1 pr-2 text-right"
+    >כדי להעניק לך חוויה מתוקה ונוחה אנחנו משתמשים בעוגיות. מאשר?</span
+  >
   <button
     id="cookie-accept"
-    class="ml-4 rounded bg-[rgb(var(--foreground))] px-4 py-2 text-[rgb(var(--background))]"
+    class="ml-4 rounded bg-[rgb(var(--primary))] px-4 py-2 font-semibold text-[rgb(var(--primary-foreground))]"
   >
-    Accept
+    בטח!
   </button>
 </div>
 <script is:inline>
