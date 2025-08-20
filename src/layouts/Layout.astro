@@ -7,6 +7,7 @@ import AboutMe from "../components/AboutMe.astro";
 import ContactForm from "../components/ContactForm.astro";
 import Projects from "../components/Projects.astro";
 import Ga4 from "./ga4.astro";
+import CookieConsent from "../components/CookieConsent.astro";
 import PainPoints from "../components/PainPoints.astro";
 import AboutAutomations from "../components/AboutAutomations.astro";
 import WhoIsItFor from "../components/WhoIsItFor.astro";
@@ -28,6 +29,7 @@ import WhoIsItFor from "../components/WhoIsItFor.astro";
   <body
     class="bg-[rgb(var(--background))] font-sans text-[rgb(var(--foreground))]"
   >
+    <CookieConsent />
     <Hero />
     <div class="w-full border-t border-[rgb(var(--border))]"></div>
 
