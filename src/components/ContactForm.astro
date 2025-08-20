@@ -100,6 +100,29 @@ import ContactIcons from "./ContactIcons.astro";
           placeholder="כתבו כאן מה שתרצו לשאול"></textarea>
       </div>
 
+      <div class="text-right">
+        <div class="flex items-center justify-end gap-2">
+          <input
+            type="checkbox"
+            name="privacy"
+            data-field="privacy"
+            class="h-4 w-4 rounded border border-[rgb(var(--border))] focus:ring-2 focus:ring-[rgb(var(--ring))]"
+          />
+          <label class="text-base text-[rgb(var(--foreground))]">
+            אני מסכים ל
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-violet-500 underline">מדיניות הפרטיות</a
+            >
+          </label>
+        </div>
+        <p data-error-for="privacy" class="mt-1 hidden text-base text-red-500">
+          יש לאשר את מדיניות הפרטיות.
+        </p>
+      </div>
+
       <!-- Buttons: start gray in HTML -->
       <div class="flex items-center justify-start gap-3">
         <button
