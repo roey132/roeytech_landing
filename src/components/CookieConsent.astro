@@ -1,0 +1,32 @@
+---
+
+---
+
+<div
+  id="cookie-consent"
+  class="fixed right-0 bottom-0 left-0 z-50 hidden items-center justify-between border-t border-[rgb(var(--border))] bg-[rgb(var(--background))] p-4 text-sm"
+>
+  <span>We use cookies for analytics. Do you accept?</span>
+  <button
+    id="cookie-accept"
+    class="ml-4 rounded bg-[rgb(var(--foreground))] px-4 py-2 text-[rgb(var(--background))]"
+  >
+    Accept
+  </button>
+</div>
+<script is:inline>
+  const banner = document.getElementById("cookie-consent");
+  const acceptBtn = document.getElementById("cookie-accept");
+  const consent = localStorage.getItem("cookie-consent");
+  if (consent === "true") {
+    banner.remove();
+  } else {
+    banner.classList.remove("hidden");
+    banner.classList.add("flex");
+  }
+  acceptBtn?.addEventListener("click", () => {
+    localStorage.setItem("cookie-consent", "true");
+    banner.remove();
+    window.dispatchEvent(new Event("cookie-consent-accepted"));
+  });
+</script>
