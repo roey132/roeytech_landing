@@ -4,23 +4,42 @@
 
 <div
   id="cookie-consent"
-  class="fixed right-0 bottom-0 left-0 z-50 hidden items-center justify-between border-t border-[rgb(var(--border))] bg-[rgb(var(--foreground))] p-4 text-base text-[rgb(var(--background))] shadow-lg"
+  class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50"
 >
-  <span class="flex-1 pr-2 text-right"
-    >כדי להעניק לך חוויה מתוקה ונוחה אנחנו משתמשים בעוגיות. מאשר?</span
+  <div
+    class="max-w-md rounded-lg border border-[rgb(var(--border))] bg-[rgb(var(--foreground))] p-6 text-center text-[rgb(var(--background))] shadow-lg"
   >
-  <button
-    id="cookie-accept"
-    class="ml-4 rounded bg-[rgb(var(--primary))] px-4 py-2 font-semibold text-[rgb(var(--primary-foreground))]"
-  >
-    בטח!
-  </button>
+    <p class="mb-4">
+      כדי להעניק לך חוויה נעימה ומקצועית אנחנו משתמשים בעוגיות. ניתן לעיין ב
+      <a
+        href="/privacy-policy"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="underline">הסכם הסודיות</a
+      >. מאשר שימוש בעוגיות?
+    </p>
+    <div class="flex justify-center gap-2">
+      <button
+        id="cookie-accept"
+        class="rounded bg-[rgb(var(--primary))] px-4 py-2 font-semibold text-[rgb(var(--primary-foreground))]"
+      >
+        מאשר
+      </button>
+      <button
+        id="cookie-decline"
+        class="rounded bg-[rgb(var(--muted))] px-3 py-1 text-sm text-[rgb(var(--muted-foreground))]"
+      >
+        לא מעוניין
+      </button>
+    </div>
+  </div>
 </div>
 <script is:inline>
   const banner = document.getElementById("cookie-consent");
   const acceptBtn = document.getElementById("cookie-accept");
+  const declineBtn = document.getElementById("cookie-decline");
   const consent = localStorage.getItem("cookie-consent");
-  if (consent === "true") {
+  if (consent === "true" || consent === "false") {
     banner.remove();
   } else {
     banner.classList.remove("hidden");
@@ -30,5 +49,9 @@
     localStorage.setItem("cookie-consent", "true");
     banner.remove();
     window.dispatchEvent(new Event("cookie-consent-accepted"));
+  });
+  declineBtn?.addEventListener("click", () => {
+    localStorage.setItem("cookie-consent", "false");
+    banner.remove();
   });
 </script>
