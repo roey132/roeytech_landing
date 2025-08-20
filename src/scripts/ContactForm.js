@@ -31,6 +31,7 @@ export function initContactForm(formSelector = "[data-contact-form]") {
   const emailI = q('[data-field="email"]');
   const phoneI = q('[data-field="phone"]');
   const msgI = q('[data-field="message"]');
+  const privacyI = q('[data-field="privacy"]');
   const err = (key) => q(`[data-error-for="${key}"]`);
 
   const validEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());
@@ -51,7 +52,9 @@ export function initContactForm(formSelector = "[data-contact-form]") {
   const isNameValid = () => nameI.value.trim().length > 0;
   const isEmailValid = () => validEmail(emailI.value.trim());
   const isPhoneValid = () => validPhoneIL(phoneI.value.trim());
-  const allValid = () => isNameValid() && isEmailValid() && isPhoneValid();
+  const isPrivacyValid = () => privacyI.checked;
+  const allValid = () =>
+    isNameValid() && isEmailValid() && isPhoneValid() && isPrivacyValid();
 
   const updateButtonColor = () => {
     if (allValid()) {
@@ -81,6 +84,11 @@ export function initContactForm(formSelector = "[data-contact-form]") {
       mark(field, ok);
       show(err("phone"), !ok);
     }
+    if (field === privacyI) {
+      const ok = privacyI.checked;
+      mark(field, ok);
+      show(err("privacy"), !ok);
+    }
 
     updateButtonColor();
   };
@@ -88,12 +96,13 @@ export function initContactForm(formSelector = "[data-contact-form]") {
   [nameI, emailI, phoneI].forEach((i) =>
     i.addEventListener("blur", () => validateFieldOnBlur(i)),
   );
+  privacyI.addEventListener("change", () => validateFieldOnBlur(privacyI));
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     e.stopPropagation();
 
-    [nameI, emailI, phoneI].forEach(validateFieldOnBlur);
+    [nameI, emailI, phoneI, privacyI].forEach(validateFieldOnBlur);
 
     if (!allValid()) {
       btnError.classList.remove("hidden");
@@ -112,37 +121,40 @@ export function initContactForm(formSelector = "[data-contact-form]") {
       message: msgI.value.trim(),
     };
     sendBtn.disabled = true;
-try {
-    const res = await sendFormData(data);
+    try {
+      const res = await sendFormData(data);
 
-    if (res.ok) {
-      console.log("Form submitted successfully:", data);
-      btnError.classList.remove("hidden");
-      btnError.textContent = "הטופס נשלח בהצלחה!";
-      btnError.classList.add("text-green-500");
-      btnError.classList.remove("text-red-500");
-      [nameI, emailI, phoneI, msgI].forEach((i) => {
-        clearFieldText(i);
-      });
-      updateButtonColor();
-    } else {
-      console.error("Error submitting form:", res.statusText);
+      if (res.ok) {
+        console.log("Form submitted successfully:", data);
+        btnError.classList.remove("hidden");
+        btnError.textContent = "הטופס נשלח בהצלחה!";
+        btnError.classList.add("text-green-500");
+        btnError.classList.remove("text-red-500");
+        [nameI, emailI, phoneI, msgI].forEach((i) => {
+          clearFieldText(i);
+        });
+        privacyI.checked = false;
+        mark(privacyI);
+        show(err("privacy"), false);
+        updateButtonColor();
+      } else {
+        console.error("Error submitting form:", res.statusText);
+        btnError.classList.remove("hidden");
+        btnError.textContent = "שגיאה בשליחת הטופס, אנא נסו שוב מאוחר יותר.";
+        btnError.classList.remove("text-green-500");
+        btnError.classList.add("text-red-500");
+      }
+    } catch (err) {
+      console.error("Network or unexpected error:", err);
       btnError.classList.remove("hidden");
       btnError.textContent = "שגיאה בשליחת הטופס, אנא נסו שוב מאוחר יותר.";
       btnError.classList.remove("text-green-500");
       btnError.classList.add("text-red-500");
     }
-  } catch (err) {
-    console.error("Network or unexpected error:", err);
-    btnError.classList.remove("hidden");
-    btnError.textContent = "שגיאה בשליחת הטופס, אנא נסו שוב מאוחר יותר.";
-    btnError.classList.remove("text-green-500");
-    btnError.classList.add("text-red-500");
-  }
 
-  await new Promise((resolve) => setTimeout(resolve, 300));
-  sendBtn.disabled = false;
-});
+    await new Promise((resolve) => setTimeout(resolve, 300));
+    sendBtn.disabled = false;
+  });
 
   updateButtonColor();
 }
