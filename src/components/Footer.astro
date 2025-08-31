@@ -1,9 +1,13 @@
 ---
 const currentYear = new Date().getFullYear();
+const copyrightSymbol = "©";
+const companyName = "RoeyTech";
+const rightsReservedText = "All rights reserved.";
+const privacyPolicyText = "Privacy Policy";
 ---
 <footer class="w-full border-t border-[rgb(var(--border))] py-6 text-center text-sm">
   <p>
-    © {currentYear} RoeyTech. All rights reserved.
-    <a href="/privacy-policy" class="ml-2 underline">Privacy Policy</a>
+    {copyrightSymbol} {currentYear} {companyName}. {rightsReservedText}
+    <a href="/privacy-policy" class="ml-2 underline">{privacyPolicyText}</a>
   </p>
 </footer>

@@ -1,5 +1,9 @@
 ---
-
+const consentPrefix = "כדי להעניק לך חוויה נעימה ומקצועית אנחנו משתמשים בעוגיות. ניתן לעיין ב";
+const confidentialityAgreementText = "הסכם הסודיות";
+const consentQuestion = ". מאשר שימוש בעוגיות?";
+const acceptText = "מאשר";
+const declineText = "לא מעוניין";
 ---
 
 <div
@@ -10,26 +14,26 @@
     class="w-full max-w-md rounded-lg border border-[rgb(var(--border))] bg-[rgb(var(--foreground))] p-4 text-center text-[rgb(var(--background))] shadow-lg md:p-6"
   >
     <p class="mb-4">
-      כדי להעניק לך חוויה נעימה ומקצועית אנחנו משתמשים בעוגיות. ניתן לעיין ב
+      {consentPrefix}
       <a
         href="/privacy-policy"
         target="_blank"
         rel="noopener noreferrer"
-        class="underline">הסכם הסודיות</a
-      >. מאשר שימוש בעוגיות?
+        class="underline">{confidentialityAgreementText}</a
+      >{consentQuestion}
     </p>
     <div class="flex justify-center gap-2">
       <button
         id="cookie-accept"
         class="rounded bg-[rgb(var(--primary))] px-4 py-2 font-semibold text-[rgb(var(--primary-foreground))]"
       >
-        מאשר
+        {acceptText}
       </button>
       <button
         id="cookie-decline"
         class="rounded bg-[rgb(var(--muted))] px-3 py-1 text-sm text-[rgb(var(--muted-foreground))]"
       >
-        לא מעוניין
+        {declineText}
       </button>
     </div>
   </div>
